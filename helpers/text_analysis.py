@@ -1,16 +1,21 @@
 """ Utility function for doing analysis on emotion datasets """
 from collections import Counter, OrderedDict
-import plotly.plotly as py
+#import plotly.plotly as py
+import chart_studio as cs
 import plotly.graph_objs as go
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 def get_tokens_and_frequency(token_list):
     """obtain word frequecy from pandas dataframe column of lists"""
-    counter = Counter(token_list)
+    all_tokens = [token for tokens in token_list for token in tokens]
+    counter = Counter(all_tokens)
+    #counter = Counter(token_list)
     counter = OrderedDict(counter.most_common()) # sort by value
-    tokens = counter.keys()
-    tokens_count = counter.values()
+    # tokens = counter.keys()
+    # tokens_count = counter.values()
+    tokens = list(counter.keys())
+    tokens_count = list(counter.values())
 
     return tokens, tokens_count
 

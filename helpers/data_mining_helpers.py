@@ -14,6 +14,14 @@ def format_rows(docs):
         D.append([temp_d])
     return D
 
+def format_rows_v2(docs):
+    """ format the text field and strip special characters """
+    D = []
+    for d in docs:
+        temp_d = " ".join(d.split("\n")).strip('\n\t')
+        D.append([temp_d])
+    return D
+
 def format_labels(target, docs):
     """ format the labels """
     return docs.target_names[target]
